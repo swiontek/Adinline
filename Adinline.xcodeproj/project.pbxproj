@@ -44,7 +44,7 @@
 		2A07207212FCF2FE0050B027 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2A07207312FCF2FE0050B027 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2AC004CB12FD076500EC0A2F /* MGMAdinline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMAdinline.h; sourceTree = "<group>"; };
-		2AC004CC12FD076500EC0A2F /* MGMAdinline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMAdinline.m; sourceTree = "<group>"; };
+		2AC004CC12FD076500EC0A2F /* MGMAdinline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMAdinline.m; sourceTree = "<group>"; usesTabs = 1; };
 		2ADAC39912FCF78600E0629F /* prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = prefix.pch; path = Classes/prefix.pch; sourceTree = "<group>"; };
 		2ADAC3A712FCF7F700E0629F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2ADAC3AB12FCF80100E0629F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };

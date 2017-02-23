@@ -64,22 +64,24 @@ NSString * const MGMAIAllowStrangers = @"MGMAIAllowStrangers";
 					tagRange.location = tagStartRange.location;
 					tagRange.length = [link length]-tagRange.location;
 				}
-                
-                NSRange replaceRange = NSMakeRange(linkStartRange.location+linkStartRange.length, linkReplaceEndRange.location-(linkStartRange.location+linkStartRange.length));
-				if ([[NSArray arrayWithObjects:@"/servicedesk/issue-type-icons", @"/secure/viewavatar", @"/images/icons/priorities/minor.svg",  @"/images/icons/priorities/major.svg",  @"/images/icons/priorities/critical.svg", nil]
-                     containsObject:[[[NSURL URLWithString:link] path] lowercaseString]]) {
+
+				NSRange replaceRange = NSMakeRange(linkStartRange.location+linkStartRange.length, linkReplaceEndRange.location-(linkStartRange.location+linkStartRange.length));
+				// JIRA specific icons, avatars, priority icons, etc... limit to 16x16
+				if ([[NSArray arrayWithObjects:@"/servicedesk/issue-type-icons", @"/secure/viewavatar", @"/secure/useravatar", @"/secure/projectavatar", nil] containsObject:[[[NSURL URLWithString:link] path] lowercaseString]] ||
+					[[[[NSURL URLWithString:link] path] lowercaseString] hasPrefix: @"/images/icons/priorities"]) {
 					NSString *image = [NSString stringWithFormat:@"<img src=\"%@\" alt=\"%@\" style=\"width: 16px; max-width: 16px; max-height: 16px;\" onLoad=\"alignChat(nearBottom());\" onclick=\"(function(that) { var link = document.createTextNode(that.alt); var clickLink = function(e) { window.event.cancelBubble = true; that.hidden = false; e.target.removeChild(link); return false; }; window.event.cancelBubble = true; that.parentElement.onclick = clickLink; that.parentElement.appendChild(link); that.hidden = true; return false; })(this); return false;\" />", link, link];
 					[html replaceCharactersInRange:replaceRange withString:image];
 					range.location += [image length]-replaceRange.length;
 					range.length = [html length]-range.location;
+				// everything else...
 				} else if ([[NSArray arrayWithObjects:@"png", @"jpg", @"jpeg", @"tif", @"tiff", @"gif", @"bmp", nil]
-                        containsObject:[[[[NSURL URLWithString:link] path] pathExtension] lowercaseString]]) {
+						containsObject:[[[[NSURL URLWithString:link] path] pathExtension] lowercaseString]]) {
 					NSString *image = [NSString stringWithFormat:@"<img src=\"%@\" alt=\"%@\" style=\"max-width: 100%%; max-height: 100%%;\" onLoad=\"alignChat(nearBottom());\" onclick=\"(function(that) { var link = document.createTextNode(that.alt); var clickLink = function(e) { window.event.cancelBubble = true; that.hidden = false; e.target.removeChild(link); return false; }; window.event.cancelBubble = true; that.parentElement.onclick = clickLink; that.parentElement.appendChild(link); that.hidden = true; return false; })(this); return false;\" />", link, link];
 					[html replaceCharactersInRange:replaceRange withString:image];
 					range.location += [image length]-replaceRange.length;
 					range.length = [html length]-range.location;
 				}
-            
+
 				[link release];
 			} else {
 				break;
