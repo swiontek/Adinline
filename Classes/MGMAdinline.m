@@ -66,7 +66,7 @@ NSString * const MGMAIAllowStrangers = @"MGMAIAllowStrangers";
 				}
                 
                 NSRange replaceRange = NSMakeRange(linkStartRange.location+linkStartRange.length, linkReplaceEndRange.location-(linkStartRange.location+linkStartRange.length));
-				if ([[NSArray arrayWithObjects:@"/servicedesk/issue-type-icons", @"/secure/viewavatar", @"/images/icons/priorities/minor.svg", nil]
+				if ([[NSArray arrayWithObjects:@"/servicedesk/issue-type-icons", @"/secure/viewavatar", @"/images/icons/priorities/minor.svg",  @"/images/icons/priorities/major.svg",  @"/images/icons/priorities/critical.svg", nil]
                      containsObject:[[[NSURL URLWithString:link] path] lowercaseString]]) {
 					NSString *image = [NSString stringWithFormat:@"<img src=\"%@\" alt=\"%@\" style=\"width: 16px; max-width: 16px; max-height: 16px;\" onLoad=\"alignChat(nearBottom());\" onclick=\"(function(that) { var link = document.createTextNode(that.alt); var clickLink = function(e) { window.event.cancelBubble = true; that.hidden = false; e.target.removeChild(link); return false; }; window.event.cancelBubble = true; that.parentElement.onclick = clickLink; that.parentElement.appendChild(link); that.hidden = true; return false; })(this); return false;\" />", link, link];
 					[html replaceCharactersInRange:replaceRange withString:image];
